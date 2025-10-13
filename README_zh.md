@@ -13,7 +13,7 @@ cd update_full_base
 unzip ../update_full_base.zip
 
 # 解包 update.bin
-../update_packaging_tools/unpack_update_bin.py -i ./update.bin -o .
+../update_unpackaging_tools/unpack_update_bin.py -i ./update.bin -o .
 
 # 安装挂载 system.img 所需依赖包（如果内核直接支持erofs文件系统则无需安装）
 sudo apt install erofsfuse
@@ -21,7 +21,7 @@ sudo apt install erofsfuse
 # 挂载system.img
 cd ./unpack_result_*
 mkdir system
-sudo mount -o erofs ./system.img ./system
+sudo mount -t erofs ./system.img ./system
 cd ./system
 ls
 ```
