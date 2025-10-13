@@ -5,7 +5,7 @@
 sudo apt install git python3 python3-xmltodict python3-cryptography python3-asn1crypto
 
 # Download the unpacking tool
-git clone https://gitcode.com/SwimmingTiger/update_unpackaging_tools.git
+git clone https://gitcode.com/hu60/update_unpackaging_tools.git
 
 # Extract the full update package
 mkdir update_full_base
