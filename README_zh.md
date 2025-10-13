@@ -1,3 +1,33 @@
+# 鸿蒙更新包 update.bin 解包工具
+
+```
+# 安装依赖
+sudo apt install git python3 python3-xmltodict python3-cryptography python3-asn1crypto
+
+# 下载解包工具
+git clone https://gitcode.com/SwimmingTiger/update_unpackaging_tools.git
+
+# 解压全量更新包
+mkdir update_full_base
+cd update_full_base
+unzip ../update_full_base.zip
+
+# 解包 update.bin
+../update_packaging_tools/unpack_update_bin.py -i ./update.bin -o .
+
+# 安装挂载 system.img 所需依赖包（如果内核直接支持erofs文件系统则无需安装）
+sudo apt install erofsfuse
+
+# 挂载system.img
+cd ./unpack_result_*
+mkdir system
+sudo mount -o erofs ./system.img ./system
+cd ./system
+ls
+```
+
+-----------------
+
 # 升级包制作工具<a name="ZH-CN_TOPIC_0000001101934690"></a>
 
 -   [简介](#section184mcpsimp)
