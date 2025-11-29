@@ -137,8 +137,14 @@ class UnpackPackage(object):
             component_type = struct.unpack(COMPONENT_TYPE_FMT, component_type_buffer)
 
             package_file.seek(self.size_offset)
-            component_size_buffer = package_file.read(COMPONENT_SIZE_SIZE)
-            component_size = struct.unpack(COMPONENT_SIZE_FMT, component_size_buffer)
+
+            #component_size_buffer = package_file.read(COMPONENT_SIZE_SIZE)
+            #component_size = struct.unpack(COMPONENT_SIZE_FMT, component_size_buffer)
+
+            # 修复鸿蒙PC固件system.img超过4GB导致解包不完整的问题
+            component_size_buffer = package_file.read(8)
+            component_size = struct.unpack('Q', component_size_buffer)
+
         except (struct.error, IOError):
             UPDATE_LOGGER.print_log(
                 "parse component failed!", UPDATE_LOGGER.ERROR_LOG)
