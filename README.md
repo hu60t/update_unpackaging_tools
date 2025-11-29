@@ -13,7 +13,7 @@ cd update_full_base
 unzip ../update_full_base.zip
 
 # Unpack update.bin
-../update_unpackaging_tools/unpack_update_bin.py -i ./update.bin -o .
+python3 ../update_unpackaging_tools/unpack_update_bin.py -i ./update.bin -o .
 
 # Install dependencies for mounting system.img (skip if the kernel supports erofs natively)
 sudo apt install erofsfuse
